@@ -10,6 +10,7 @@ body {
   background-position: center;
   background-size: cover;
   padding: 37px 72px 140px;
+  min-height: 100vh;
 }
 
 .pais-vasak {

@@ -1,0 +1,38 @@
+.matkale-registreerumine {
+    display: flex;
+    margin-top: 60px;
+}
+
+.matk {
+    width: 50%;
+    padding: 20px;
+    border-right: 1px solid gray;
+}
+
+.matka-pealkiri,
+.vormi-pealkiri {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.matka-asukoht {
+    margin-top: 16px;
+}
+
+.matka-hind {
+    margin-top: 16px;
+    font-weight: bold;
+}
+
+.matka-pilt {
+    margin-top: 20px;
+}
+
+.matka-pilt>img {
+    width: 100%;
+}
+
+.vorm {
+    width: 50%;
+    padding: 20px;
+}
