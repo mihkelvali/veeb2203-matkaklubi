@@ -48,10 +48,19 @@ const matkad = [matk1, matk2, matk3];
 
 const naitaMatkaVaadet = (req, res) => {
   const matk = matkad.find((matk) => matk.id === parseInt(req.params.matkaId))
-  return res.render('pages/trek', { matk: matk })
+  return res.render('pages/trek', { matk })
+}
+
+const registreeriOsaleja = (req, res) => {
+  const paringuKeha = req.body;
+  const matk = matkad.find((matk) => matk.id === parseInt(paringuKeha.matkaId));
+  matk.participants.push(paringuKeha.osaleja);
+  console.log(JSON.stringify(matkad));
+  res.json({ response: 'Töötas!' });
 }
 
 express()
+  .use(express.json())
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
@@ -60,4 +69,5 @@ express()
   .get('/treks/:matkaId', naitaMatkaVaadet)
   .get('/treks', (req, res) => res.render('pages/treks', { matkad: matkad }))
   .get('/news', (req, res) => res.render('pages/news'))
+  .post('/api/register', registreeriOsaleja)
   .listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
