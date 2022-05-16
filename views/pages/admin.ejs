@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin</title>
+    <link rel="stylesheet" href="/stylesheets/admin.css">
+    <%- include ("../partials/header.ejs") %>
+</head>
+
+<body>
+    <h1>Matkaklubi administreerimine</h1>
+    <div class="konteiner">
+        <div id="matkad" class="matkad">
+        </div>
+        <div id="matka-detail" class="matka-detail">
+            <h5 id="matka-pealkiri"></h5>
+            <input id="detail-pealkiri" type="text"></input>
+            <textarea id="detail-kirjeldus"></textarea>
+            <input id="detail-pilt" type="text"></input>
+            <button id="detail-salvesta" class="btn btn-primary">Salvesta</button>
+            <h5 class="osalejad">Osalejad</h5>
+            <div id="detail-osalejad"></div>
+        </div>
+    </div>
+    <script src="/scripts/admin.js"></script>
+</body>
+
+</html>

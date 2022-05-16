@@ -59,6 +59,19 @@ const registreeriOsaleja = (req, res) => {
   res.json({ response: 'Töötas!' });
 }
 
+const tagastaMatkad = (req, res) => {
+  res.json(matkad);
+}
+
+const salvestaMatk = (req, res) => {
+  const matkaId = req.params.matkaId;
+  let matk = matkad.find((matk) => matk.id === parseInt(matkaId));
+  matk.title = req.body.title;
+  matk.description = req.body.description;
+  matk.imageUrl = req.body.imageUrl;
+  res.json({ response: 'Töötas!' });
+}
+
 express()
   .use(express.json())
   .use(express.static(path.join(__dirname, 'public')))
@@ -69,5 +82,8 @@ express()
   .get('/treks/:matkaId', naitaMatkaVaadet)
   .get('/treks', (req, res) => res.render('pages/treks', { matkad: matkad }))
   .get('/news', (req, res) => res.render('pages/news'))
+  .get('/admin', (req, res) => res.render('pages/admin'))
   .post('/api/register', registreeriOsaleja)
+  .get('/api/treks', tagastaMatkad)
+  .post('/api/treks/:matkaId', salvestaMatk)
   .listen(PORT, () => console.log(`Listening on http://localhost:${PORT}`));
